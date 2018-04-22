@@ -1,3 +1,8 @@
 name = Utouch
 description = A totally awesome theme.
 core = 7.x
+
+; CSS
+stylesheets[all][] = css/blocks.css
+stylesheets[all][] = css/theme-styles.css
+stylesheets[all][] = css/widgets.css

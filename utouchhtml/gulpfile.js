@@ -17,6 +17,7 @@ gulp.task('sass', function() {
     gulp.src('html/sass/*.scss')
         .pipe(sass())
         .pipe(gulp.dest('html/css'))
+        .pipe(gulp.dest('../sites/all/themes/utouch/css'))
 
    /* gulp.src('html/sass/blocks/!*.scss')
         .pipe(sass())
@@ -65,26 +66,26 @@ gulp.task('browserSync', function() {
 
 var useref = require('gulp-useref');
 
-gulp.task('useref', function(){
-    var assets = useref.assets();
+// gulp.task('useref', function(){
+//     // var assets = useref.assets();
 
-    return gulp.src('html/*.html')
-        .pipe(assets)
-        .pipe(assets.restore())
-        .pipe(useref())
-        .pipe(gulp.dest('dist'))
-});
+//     return gulp.src('html/*.html')
+//         // .pipe(assets)
+//         // .pipe(assets.restore())
+//         .pipe(useref())
+//         .pipe(gulp.dest('dist'))
+// });
 
 
 var uglify = require('gulp-uglify');
 
 gulp.task('useref', function(){
-    var assets = useref.assets();
+    // var assets = useref.assets();
 
     return gulp.src('html/*.html')
-        .pipe(assets)
+        // .pipe(assets)
         .pipe(uglify())
-        .pipe(assets.restore())
+        // .pipe(assets.restore())
         .pipe(useref())
         .pipe(gulp.dest('dist'))
 });
@@ -97,12 +98,12 @@ gulp.task('useref', function(){
 var gulpIf = require('gulp-if');
 
 gulp.task('useref', function(){
-    var assets = useref.assets();
+    // var assets = useref.assets();
 
     return gulp.src('html/*.html')
-        .pipe(assets)
+        // .pipe(assets)
         .pipe(gulpIf('*.js', uglify()))
-        .pipe(assets.restore())
+        // .pipe(assets.restore())
         .pipe(useref())
         .pipe(gulp.dest('dist'))
 });
@@ -113,14 +114,14 @@ gulp.task('useref', function(){
 var minifyCSS = require('gulp-minify-css');
 
 gulp.task('useref', function(){
-    var assets = useref.assets();
+    // var assets = useref.assets();
 
     return gulp.src('html/*.html')
-        .pipe(assets)
+        // .pipe(assets)
         .pipe(gulpIf('*.css', minifyCSS()))
         // Uglifies only if it's a Javascript file
         .pipe(gulpIf('*.js', uglify()))
-        .pipe(assets.restore())
+        // .pipe(assets.restore())
         .pipe(useref())
         .pipe(gulp.dest('dist'))
 });
